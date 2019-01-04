@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+        
+        <div class="container-fluid" id ="first_section_row">
+
+                <div class="container" id="vision">
+                <div class ="container" id="vision_text">
+                    <h1 class="value_prop">Solve your research problems faster</h1>
+                    <p class="vision_blurb">Connect with a researcher who has the expertise you need.<br>Sign up for Scipertise and do better research, faster.</p>
+                    <p class="advice_blurb">Get insights on: <br> experimental models  |  software  |  lab techniques  |  equipment  |   data analysis</p>
+                </div>
+
+
+                </div>
+                <div class = "container" id="call_to_action">
+                    <form>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'search:search_users' %}"><button type="button" class="btn btn-primary" id ="call_to_action">Find Expertise</button></a>
+                        {% else %}
+                        <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary" id ="call_to_action">Signup for beta</button></a>
+                        {% endif %}
+                    </form>
+                </div>
+
+            </div>
+                <div class="container-fluid" id="second_section_row">
+
+               
+                 <div class=divtitle>
+                    <h1>How it works</h1>
+                </div>
+               <div class="container-fluid" id="howitworks">
+                <div class="container" id="step1" >
+                
+                
+                    <img class="icon1" src="/static/css/scipertise_icon_step1.png">
+                     
+                        <h4 class ="icon_title">Find a Scientist</h4>
+                        <p class="icontext">Browse researcher profiles or search for an expert by skill. Message someone to see if they're the right fit.</p>
+               
+                      
+                </div>
+                
+                <div class="container" id="step2" >
+                  
+                    <img class="icon2" src="/static/css/scipertise_icon_step2.png">
+                     
+                        <h4 class ="icon_title">Book a Call</h4>
+                        <p class="icontext">Schedule a video call with an expert of your choice. Get quick advice, help troubleshooting, or book a tutorial.</p>   
+                </div>
+                
+                <div class="container" id="step3" >
+                
+                    <img class="icon3" src="/static/css/scipertise_icon_step3.png">
+                        <h4 class ="icon_title">Solve Problems</h4>
+                        <p class="icontext">Discuss, learn and solve problems with someone who has the right expertise. Move your research forward.</p>
+                 
+                    
+                    
+                </div>
+
+            </div>
+         </div>
+            
+               
+        <div class="container-fluid" id ="third_section_row">
+            <div class="container" id="section3_signup" > 
+                <h2 class="section3_text">Scipertise is making it easier to find the expertise you need to improve your research. Join the movement and unlock your research potential.</h2>
+            <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary" id ="call_to_action">Signup for free beta access</button></a>
+           
+            </div>
+
+          
+</div>
+
+   
+
+{% endblock %}

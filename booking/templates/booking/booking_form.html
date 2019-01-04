@@ -1,0 +1,66 @@
+
+
+{% extends 'layout.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }} 
+{% load widget_tweaks %}
+
+{% block title %}
+Event
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid booking">
+    {% if booking and booking.is_confirmed == False and booking.user == request.user %}
+    <div class="container" id="booking_form_text"><h3>Please select a new time for your video call</h3></div>
+    {% elif booking and booking.is_confirmed == False and booking.expert == request.user %}
+     <div class="container" id="booking_form_text"><h3>Please confirm booking request</h3></div>
+    {% elif booking %}
+    <div class="container" id="booking_form_text"><h3>Please select a new time for your video call</h3></div>
+    {% else %}
+    <div class="container" id="booking_form_text"><h3>Please select a time for your video call</h3></div>
+     {% endif %}
+    <div class="container" id="booking_form">
+       
+ 
+        
+    <form method="post">
+      {% csrf_token %}
+
+    <div class="form-group booking_form">
+     {% for field in form.visible_fields %}
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+      {% if field.help_text %}
+    <small class="form-text text-muted">{{ field.help_text |safe }}</small>
+      {% endif %}
+    {% endfor %}
+    <button type="submit" class="availability_button">Submit</button><br><br>
+    
+  </div>
+</form>
+        
+        
+        
+        
+        
+<!--
+        
+    <form method="post" class="booking_form">
+      {% csrf_token %}
+
+        {{ form.as_p }}
+
+    <button type="submit" class="availability_button"> Request to Book </button>
+
+    </form>
+-->
+    </div>
+</div>
+
+
+{% endblock %}
