@@ -249,6 +249,74 @@ EMAIL_PORT = 587
 #    }
 #}
 
+LOGGING = {
+
+'version': 1,
+
+'disable_existing_loggers': True,
+
+'formatters': {
+
+'verbose': {
+
+'format': '%(levelname)s [%(asctime)s] %(module)s %(message)s'
+
+},
+
+},
+
+'handlers': {
+
+'console': {
+
+'level': 'DEBUG',
+
+'class': 'logging.StreamHandler',
+
+'formatter': 'simple'
+
+},
+
+'file': {
+
+'class': 'logging.handlers.RotatingFileHandler',
+
+'formatter': 'verbose',
+
+'filename': '/var/www/logs/ibiddjango.log',
+
+'maxBytes': 1024000,
+
+'backupCount': 3,
+
+},
+
+'mail_admins': {
+
+'level': 'ERROR',
+
+'class': 'django.utils.log.AdminEmailHandler'
+
+}
+
+},
+
+'loggers': {
+
+'django': {
+
+'handlers': ['file', 'console',’mail_admins’],
+
+'propagate': False,
+
+'level': 'DEBUG',
+
+},
+
+}
+
+}
+
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
