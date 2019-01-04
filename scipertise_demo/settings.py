@@ -21,7 +21,7 @@ import logging
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ADMINS = (('Leigh', 'leigh.christopher2@gmail.com'),)
+ADMINS = (('Leigh', 'EMAIL_HOST_USER'),)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -30,7 +30,7 @@ ADMINS = (('Leigh', 'leigh.christopher2@gmail.com'),)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = 'SECRET_KEY'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
