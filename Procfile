@@ -1,1 +1,1 @@
-web: gunicorn scipertise_new.wsgi --log-file -
+web: gunicorn scipertise_demo.wsgi --log-file -
